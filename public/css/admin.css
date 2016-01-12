@@ -1,0 +1,23 @@
+/* JG CSS */
+
+#register-btn {
+    float: right;
+    margin-right: 30px;
+}
+
+.admin-body{
+	width: 80%;
+	margin:0 auto;
+	background-color:#EDEDED;
+}
+
+.section-admin{
+	background-color: white;
+}
+
+.back-grey {
+    background-color: #e7e7e7 !important;
+    border: #D8D8D8 solid 1px;
+    padding: 11px;
+    font-size: 20px;
+}
