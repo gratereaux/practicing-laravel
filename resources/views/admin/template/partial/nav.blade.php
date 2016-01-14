@@ -10,7 +10,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Inicio <span class="sr-only">(current)</span></a></li>
         <li><a href="{{ route('admin.users.index') }}">Usuarios</a></li>
-        <li><a href="">Categorías</a></li>
+        <li><a href="{{ route('admin.categories.index') }}">Categorías</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artículos <span class="caret"></span></a>
           <ul class="dropdown-menu">

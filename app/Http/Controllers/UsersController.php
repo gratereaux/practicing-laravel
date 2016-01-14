@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use Laracasts\Flash\Flash;
+use App\Http\Requests\UserRequest;
 
 class UsersController extends Controller
 {
@@ -20,9 +21,9 @@ class UsersController extends Controller
 
 	public function create(){
 		return view('admin.users.create');
-	}	
+	}
 
-	public function store(Request $request){
+	public function store(UserRequest $request){
 
 		$user = new User($request->all());
 		$user->password = bcrypt($request->password);
