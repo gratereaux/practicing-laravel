@@ -29,7 +29,7 @@
             </ul>
           </li>
           <li><a href="">Imágenes</a></li>
-          <li><a href="">Tags</a></li>
+          <li><a href="{{ route('admin.tags.index') }}">Tags</a></li>
         @endif
       </ul>
 <!--

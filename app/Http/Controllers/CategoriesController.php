@@ -58,7 +58,7 @@ class CategoriesController extends Controller
 
 	}
 
-	public function update(Request $request, $id)
+	public function update(CategoryRequest $request, $id)
     {
         $cat = Category::find($id);
 

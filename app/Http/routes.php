@@ -55,6 +55,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     
 	Route::resource('users','UsersController');
 	Route::resource('categories','CategoriesController');
+	Route::resource('tags','TagsController');
 
 	Route::get('users/{id}/destroy', [
 		'uses' 	=> 	'UsersController@destroy',
@@ -64,6 +65,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 	Route::get('categories/{id}/destroy', [
 		'uses' 	=> 	'CategoriesController@destroy',
 		'as'	=>	'admin.categories.destroy'
+	]);
+
+	Route::get('tags/{id}/destroy', [
+		'uses' 	=> 	'TagsController@destroy',
+		'as'	=>	'admin.tags.destroy'
 	]);
 	
 });
