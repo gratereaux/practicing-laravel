@@ -28,7 +28,8 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin';
+    protected $loginPath = '/admin/login';
 
     /**
      * Create a new authentication controller instance.
@@ -68,5 +69,9 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    protected function getLogin(){
+        return view('admin.auth.login');
     }
 }

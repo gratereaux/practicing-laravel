@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h1>Hola Mundo!</h1>
+<h1>Administration index!</h1>
 
 
 @endsection

@@ -47,7 +47,11 @@ Route::group(['prefix' => 'article'], function () {
 });
 
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+	Route::get('/', ['as' => 'admin.index' , function () {
+	    return view('admin.index');
+	}]);
     
 	Route::resource('users','UsersController');
 	Route::resource('categories','CategoriesController');
@@ -61,6 +65,21 @@ Route::group(['prefix' => 'admin'], function () {
 		'uses' 	=> 	'CategoriesController@destroy',
 		'as'	=>	'admin.categories.destroy'
 	]);
-
 	
 });
+
+
+Route::get('admin/login', [
+	'uses'	=>	'Auth\AuthController@getLogin',
+	'as'	=>	'admin.auth.login'
+]);
+
+Route::post('admin/login', [
+	'uses'	=>	'Auth\AuthController@postLogin',
+	'as'	=>	'admin.auth.login'
+]);
+
+Route::get('admin/logout', [
+	'uses'	=>	'Auth\AuthController@logout',
+	'as'	=>	'admin.auth.logout'
+]);
