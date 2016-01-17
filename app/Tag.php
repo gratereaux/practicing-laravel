@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Tag extends Model
 {
     protected $table = "tags";
@@ -12,5 +13,10 @@ class Tag extends Model
 
     public function articles(){
     	return $this->belongsToMany('\App\Article');
+    }
+
+     public function scopeSearch($query, $name){
+
+        return $query->where('name', 'LIKE' ,'%'.$name.'%');
     }
 }

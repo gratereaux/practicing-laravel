@@ -12,9 +12,9 @@ use App\Http\Requests\TagRequest;
 
 class TagsController extends Controller
 {
-    public function index(){
-    	$tags = Tag::orderBy('id', 'DESC')->paginate(5);
+    public function index(Request $request){
 
+        $tags = Tag::search($request->name)->orderBy('id', 'DESC')->paginate(5);
     	return view('admin.tags.tags')->with('tags', $tags);
 
     }

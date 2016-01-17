@@ -13,8 +13,9 @@ use App\Http\Requests\UserRequest;
 class UsersController extends Controller
 {
     
-	public function index(){
-		$users = User::orderBy('id', 'DESC')->paginate(5);
+	public function index(Request $request){
+
+		$users = User::search($request->name)->orderBy('id', 'DESC')->paginate(5);
 
 		return view('admin.users.users')->with('users', $users);
 	}
@@ -61,9 +62,7 @@ class UsersController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-        if($request->type){
-        	$user->type = $request->type;
-        }
+    	$user->type = $request->type;
 
         $user->save();
 

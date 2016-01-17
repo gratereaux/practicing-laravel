@@ -6,6 +6,17 @@
 
 	<a href="{{ route('admin.users.create') }}" id="register-btn" class="btn btn-info">Registrar nuevo usuario</a>
 	
+	{!! Form::open(['route' => 'admin.users.index', 'method' => 'GET', 'class' => 'navbar-form pull-left']) !!}
+
+		<div class="input-group">
+			
+			{!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Buscar Usuario...', 'aria-describedby' => 'search']) !!}
+			<span class="input-group-addon" id="search"><span class="glyphicon glyphicon-search"></span></span>
+
+		</div>
+
+	{!! Form::close() !!}
+
 	<table class="table tanle-striped">
 		<thead>
 			<th>ID</th>
