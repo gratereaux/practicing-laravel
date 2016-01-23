@@ -23,7 +23,7 @@
 
 	<div class="form-group">
 		{!! Form::label('category_id', 'Categoría') !!}
-		{!! Form::select('category_id', $categories, null, ['class' => 'form-control', 'placeholder' => 'Seleccione una opción','required']) !!}
+		{!! Form::select('category_id', $categories, null, ['class' => 'form-control chosen-cat','required']) !!}
 	</div>
 
 	<div class="form-group">
@@ -38,7 +38,7 @@
   
 	<div class="form-group">
 		{!! Form::label('tags', 'Tags') !!}
-		{!! Form::select('tags[]', $tags, null, ['class' => 'form-control', 'multiple', 'required']) !!}
+		{!! Form::select('tags[]', $tags, null, ['class' => 'form-control chosen-tag', 'multiple', 'required']) !!}
 	</div>
  
 
@@ -48,5 +48,22 @@
 	</div>
 
 	{!! Form::close() !!}
+
+@endsection
+
+
+@section('script')
+	
+	<script type="text/javascript">
+
+		$('.chosen-tag').chosen({
+			no_results_text: "Oops, no encuentro tags con ",
+			placeholder_text_multiple: 'Selecciona uno o varios Tags...'
+		});
+
+		$('.chosen-cat').chosen();
+
+	</script>
+	
 
 @endsection

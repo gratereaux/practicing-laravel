@@ -6,7 +6,7 @@
 
 	<a href="{{ route('admin.categories.create') }}" id="register-btn" class="btn btn-info">Agregar nueva categoría</a>
 
-		<table class="table tanle-striped">
+	<table class="table tanle-striped">
 		<thead>
 			<th>ID</th>
 			<th>Categoría</th>

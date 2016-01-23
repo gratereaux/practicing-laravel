@@ -5,6 +5,7 @@
 	<title>@yield('title', 'Blog Jose G') | Panel de Administracion </title>
 	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 	<link rel="stylesheet" href="{{ asset('plugin/bootstrap/css/bootstrap.css') }}">
+	<link rel="stylesheet" href="{{ asset('plugin/chosen/chosen.css') }}">
 	<link href='https://fonts.googleapis.com/css?family=Lato:900italic' rel='stylesheet' type='text/css'>
 </head>
 <body class="admin-body">
@@ -41,6 +42,9 @@
 
 	<script src="{{ asset('plugin/jquery/js/jquery-2.2.0.js') }}"></script>
 	<script src="{{ asset('plugin/bootstrap/js/bootstrap.js') }}"></script>
+	<script src="{{ asset('plugin/chosen/chosen.jquery.js') }}"></script>
+
+	@yield('script')
 
 </body>
 </html>

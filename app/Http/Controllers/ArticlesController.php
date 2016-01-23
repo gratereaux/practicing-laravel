@@ -19,7 +19,10 @@ class ArticlesController extends Controller
 {
     
 	public function index(){
-		return view('admin.articles.index');
+
+		$arts = Article::orderBy('id', 'DESC')->paginate(5);
+
+		return view('admin.articles.index')->with('arts', $arts);
 	}
 
 
@@ -59,6 +62,18 @@ class ArticlesController extends Controller
 
 		Flash::success('Se ha agregado el articulo '. $article->title . ' de forma satisfactoria.');
 		redirect()->route('admin.articles.index');
+	}
+
+	public function destroy($id){
+		
+		$art = Article::find($id);
+		$titulo = $art->title;
+
+		$art->delete();
+
+		Flash::error("El artículo ".$titulo." ha sido eliminada de manera exitosa!");
+		
+		return redirect()->route('admin.articles.index');	
 	}
 
 }
