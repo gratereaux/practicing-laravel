@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" style="font-family: 'Lato', sans-serif; font-size: 30px; color: #D9534F;" href="#">Sistema de ADM</a>
+      <a class="navbar-brand" style="font-family: 'Lato', sans-serif; font-size: 30px; color: #D9534F;" href="#">Miyama-Ryu Jujutsu</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,7 +17,7 @@
 
 
         @if(Auth::user())
-          <li><a href="{{ route('admin.users.index') }}">Usuarios</a></li>
+          <li><a href="{{ route('admin.practicantes.index') }}">Practicantes</a></li>
           <li><a href="{{ route('admin.categories.index') }}">Categorías</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artículos <span class="caret"></span></a>
@@ -48,6 +48,8 @@
           <ul class="dropdown-menu">
             <li><a href="{{ route('admin.users.edit', Auth::user()->id ) }}">Mi Perfil</a></li>
             <li><a href="#">Cambiar Password</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="{{ route('admin.users.index') }}">Administrar Usuarios</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="{{ route('admin.auth.logout') }}">Logout</a></li>
           </ul>

@@ -4901,6 +4901,61 @@ a.label:focus {
 .label-warning {
   background-color: #f0ad4e;
 }
+
+/*Del DOjo*/
+.label-rank-mokuroku {
+  background-color: #000;
+  padding: 5px 66px;
+}
+
+.label-rank-menkyo{
+  background-color: #000;
+}
+.label-rank-menkyo span{
+  background-color: white;
+  width: 27px;
+  height: 15px;
+  display: inline-block;
+  margin: 0 15px 0 15px;
+  padding: 5px .6em .3em;
+  position: relative;
+  top: 4px;
+  overflow: hidden;
+  border-color: black;
+}
+
+
+.label-rank-red {
+  background-color: red;
+  padding: 5px 74px;
+}
+
+.label-rank-orange {
+  background-color: #fa4e0b;
+  padding: 3px 74px;
+}
+.label-rank-yellow {
+  background-color: yellow;
+  padding: 3px 74px;
+}
+.label-rank-green {
+  background-color: green;
+  padding: 3px 74px;
+}
+.label-rank-brown {
+  background-color: #722b01;
+  padding: 3px 74px;
+}
+
+.label-rank-white {
+  background-color: white;
+  border: 1px solid #000;
+  color: black !important;
+  padding: 3px 74px;
+}
+
+
+
 .label-warning[href]:hover,
 .label-warning[href]:focus {
   background-color: #ec971f;
