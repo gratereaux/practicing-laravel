@@ -58,32 +58,48 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 	Route::resource('tags','TagsController');
 	Route::resource('articles','ArticlesController');
 	Route::resource('practicantes', 'PracticantesController');
+	Route::resource('pagos', 'PagosController');
 
+	//Custom for Users 
 	Route::get('users/{id}/destroy', [
 		'uses' 	=> 	'UsersController@destroy',
 		'as'	=>	'admin.users.destroy'
 	]);
 
+	//Custom for Categories 
 	Route::get('categories/{id}/destroy', [
 		'uses' 	=> 	'CategoriesController@destroy',
 		'as'	=>	'admin.categories.destroy'
 	]);
 
+	//Custom for Tags 
 	Route::get('tags/{id}/destroy', [
 		'uses' 	=> 	'TagsController@destroy',
 		'as'	=>	'admin.tags.destroy'
 	]);
 
+	//Custom for Articles 
 	Route::get('articles/{id}/destroy', [
 		'uses' 	=> 	'ArticlesController@destroy',
 		'as'	=>	'admin.articles.destroy'
 	]);
 
+	//Custom for Practicantes 
 	Route::get('practicantes/{id}/destroy', [
 		'uses' 	=> 	'PracticantesController@destroy',
 		'as'	=>	'admin.practicantes.destroy'
 	]);
 
+	//Custom for Pagos 
+	Route::get('pagos/{id}/destroy', [
+		'uses' 	=> 	'PagosController@destroy',
+		'as'	=>	'admin.pagos.destroy'
+	]);
+
+	Route::get('pagos/{id}/create', [
+		'uses' 	=> 	'PagosController@create',
+		'as'	=>	'admin.pagos.create'
+	]);
 	
 });
 

@@ -12,6 +12,10 @@ class Practicante extends Model
 	protected $fillable = ['name', 'dojo', 'typemember','actual_rank', 'bbnumber', 'email', 'yearbegin', 'policecourse', 'comments'];
 
 
+	public function pagos(){
+    	return $this->hasMany('\App\Pago');
+    }
+
 
 	public function scopeSearch($query, $name){
 

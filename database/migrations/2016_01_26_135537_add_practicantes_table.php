@@ -21,7 +21,7 @@ class AddPracticantesTable extends Migration
             $table->string('bbnumber');
             $table->string('email');
             $table->date('yearbegin');
-            $table->boolean('policecourse');
+            $table->string('policecourse');
             $table->text('comments');
             
             $table->timestamps();

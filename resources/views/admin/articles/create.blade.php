@@ -37,7 +37,7 @@
 	</div>
   
 	<div class="form-group">
-		{!! Form::label('tags', 'Tags') !!}
+		{!! Form::label('tags', 'Quien lo puede ver?') !!}
 		{!! Form::select('tags[]', $tags, null, ['class' => 'form-control chosen-tag', 'multiple', 'required']) !!}
 	</div>
  
