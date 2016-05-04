@@ -21,6 +21,7 @@
 		<thead>
 			<th>ID</th>
 			<th>Nombre</th>
+			<th>Username</th>
 			<th>Correo</th>
 			<th>Tipo</th>
 			<th>Accion</th>
@@ -31,6 +32,7 @@
 			<tr>
 				<td>{{ $user->id }}</td>
 				<td>{{ $user->name }}</td>
+				<td>{{ $user->username }}</td>
 				<td>{{ $user->email }}</td>
 				<td> 
 					@if($user->type == "admin")

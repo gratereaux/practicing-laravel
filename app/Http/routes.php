@@ -46,12 +46,24 @@ Route::group(['prefix' => 'article'], function () {
 
 });
 
+Route::group(['prefix' => 'api'], function (){
+
+	Route::get('/', ['as' => 'api.index' , function () {
+	    return view('api.index');
+	}]);
+
+	Route::get('practicantes', [
+		'uses'	=>	'ApiController@practicantes',
+		'as'	=>	'api.practicantes'
+	]);
+
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 	Route::get('/', ['as' => 'admin.index' , function () {
 	    return view('admin.index');
-	}]);
+	}]);	
     
 	Route::resource('users','UsersController');
 	Route::resource('categories','CategoriesController');
@@ -101,6 +113,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 		'as'	=>	'admin.pagos.create'
 	]);
 	
+	Route::post('pagos/{id}', [
+		'uses' 	=> 	'PagosController@store',
+		'as'	=>	'admin.pagos.store'
+	]);
 });
 
 

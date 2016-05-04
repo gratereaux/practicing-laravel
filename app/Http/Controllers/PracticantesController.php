@@ -28,7 +28,7 @@ class PracticantesController extends Controller
                         ->with('ranks', Config::get('constants.ranks'))
                         ->with('type', Config::get('constants.type'));
     }
-
+    
     public function create(){
     	
     	return view('admin.practicantes.create')

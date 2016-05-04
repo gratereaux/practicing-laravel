@@ -83,38 +83,38 @@
 	  </div>
 	</div>
 
-<h3>Registro de pago</h3>
+<h3>Edición de pago</h3>
 
 
-	{!! Form::open(['route' => ['admin.pagos.store', $practicante->id], 'method' => 'POST']) !!}
+	{!! Form::open(['route' => ['admin.pagos.update', $pago->id], 'method' => 'PUT']) !!}
 
 		<div class="form-group">
 			{!! Form::label('concepto', 'Concepto') !!}
-			{!! Form::select('concepto', $conceptos, null, ['class' => 'form-control chosen-dojo','required', 'placeholder' => '-- Seleccione --']) !!}
+			{!! Form::select('concepto', $conceptos, $pago->concepto, ['class' => 'form-control chosen-dojo','required', 'placeholder' => '-- Seleccione --']) !!}
 		</div>
 		
 		<div class="form-group">
 			{!! Form::label('fecha_pago', 'Fecha del pago') !!}
-			{!! Form::date('fecha_pago', null, ['class' => 'form-control', 'placeholder' => '99-99-9999','required']) !!}
+			{!! Form::date('fecha_pago', $pago->fecha_pago, ['class' => 'form-control', 'placeholder' => '99-99-9999','required']) !!}
 		</div>	
 
 		<div class="form-group">
 			{!! Form::label('is_paid', 'Tipo de pago') !!}
-			{!! Form::select('is_paid', ['Abono', 'Completo'], 1, ['class' => 'form-control','required']) !!}
+			{!! Form::select('is_paid', ['Abono', 'Completo'], $pago->is_paid, ['class' => 'form-control','required']) !!}
 		</div>
 
 		<div class="form-group">
 			{!! Form::label('ammount', 'Monto') !!}
-			{!! Form::number('ammount', null, ['class' => 'form-control', 'placeholder' => 'Monto a pagar','required']) !!}
+			{!! Form::number('ammount', $pago->ammount, ['class' => 'form-control', 'placeholder' => 'Monto a pagar','required']) !!}
 		</div>
 		
 		<div class="form-group">
 			{!! Form::label('comments', 'Comentarios') !!}
-			{!! Form::textarea('comments', null, ['class' => 'form-control trumbowyg-content']) !!}
+			{!! Form::textarea('comments', $pago->comments, ['class' => 'form-control trumbowyg-content']) !!}
 		</div>
 
 		<div class="form-group">
-			{!! Form::submit('Pagar', ['class' => 'btn btn-danger', 'style' => 'font-size: 25px']) !!}
+			{!! Form::submit('Modificar pago', ['class' => 'btn btn-warning', 'style' => 'font-size: 25px']) !!}
 		</div>
 
 	{!! Form::close() !!}

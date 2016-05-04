@@ -13,24 +13,31 @@
           <li><a href="/admin">Inicio <span class="sr-only">(current)</span></a></li>
         @else
           <li><a href="/">Inicio <span class="sr-only">(current)</span></a></li>
+          <li><a href="/api">Rest Api</a></li>
         @endif
 
 
         @if(Auth::user())
-          <li><a href="{{ route('admin.practicantes.index') }}">Practicantes</a></li>
-          <li><a href="">Sistema de pago</a></li>
+          @if(Auth::user()->type == "admin")
+              <li><a href="{{ route('admin.practicantes.index') }}">Practicantes</a></li>
+              <li><a href="">Sistema de pago</a></li>
 
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Informacion y Programa <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="{{ route('admin.articles.index') }}">Todos</a></li>
-              <li><a href="#">por usuario</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">por categoría</a></li>
-              <li><a href="#">por etiquetas</a></li>
-            </ul>
-          </li>
-          <li><a href="">Imágenes</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Informacion y Programa <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{ route('admin.articles.index') }}">Todos</a></li>
+                  <li><a href="#">por usuario</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">por categoría</a></li>
+                  <li><a href="#">por etiquetas</a></li>
+                </ul>
+              </li>
+              <li><a href="">Imágenes</a></li>
+            @else
+              <li><a href="">Información</a></li>
+              <li><a href="">Mis Tecnicas</a></li>
+              <li><a href="">Mis Pagos</a></li>
+            @endif
         @endif
       </ul>
 <!--

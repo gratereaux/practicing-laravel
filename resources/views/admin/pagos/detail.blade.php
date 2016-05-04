@@ -5,6 +5,7 @@
 @section('content')
 
 <a href="{{ route('admin.pagos.create', $practicante->id) }}" id="register-btn" class="btn btn-info">Registrar nuevo Pago</a>
+<a href="{{ route('admin.practicantes.index') }}" id="register-btn" style="margin-top: 1px !important;" class="btn btn-default navbar-btn">Ver todos los practicantes</a>
 
 	<div class="panel-group">
 	    <h3>Perfil de {{ $practicante->name }}</h3>
@@ -89,7 +90,7 @@
 			<th>Fecha de pago</th>
 			<th>Concepto</th>
 			<th>Monto</th>
-			<th>Mes/es Pagado/s</th>
+			<th>Comentario</th>
 			<th>Accion</th>
 		</thead>
 
@@ -104,7 +105,7 @@
 					@endif
 				</td>
 				<td>{{ $pago->fecha_pago }}</td>
-				<td>{{ $pago->concepto }}</td>
+				<td>{{ $conceptos[$pago->concepto] }}</td>
 				<td>RD${{ $pago->ammount }}</td>
 				<td>{{ $pago->comments}}</td>
 				<td>

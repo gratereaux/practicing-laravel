@@ -29,7 +29,8 @@ class PagosController extends Controller
                         ->with('pagos', $pagos)
                         ->with('dojos', Config::get('constants.dojos'))
                         ->with('ranks', Config::get('constants.ranks'))
-                        ->with('type', Config::get('constants.type'));
+                        ->with('type', Config::get('constants.type'))
+                        ->with('conceptos', Config::get('constants.conceptos'));
     }
 
 
@@ -50,8 +51,49 @@ class PagosController extends Controller
 
     public function edit($id){
     	$pago = Pago::find($id);
-        dd($pago);
+        $practicante = Practicante::find($pago->practicante_id);
+        
+        return view('admin.pagos.edit')
+                        ->with('pago', $pago)
+                        ->with('practicante', $practicante)
+                        ->with('dojos', Config::get('constants.dojos'))
+                        ->with('ranks', Config::get('constants.ranks'))
+                        ->with('type', Config::get('constants.type'))
+                        ->with('conceptos', Config::get('constants.conceptos'));
+
     }
+
+    public function update(Request $request, $id){
+
+
+        $pago = Pago::find($id);
+
+        $pago->concepto = $request->concepto;
+        $pago->fecha_pago = $request->fecha_pago;
+        $pago->is_paid = $request->is_paid;
+        $pago->ammount = $request->ammount;
+        $pago->comments = $request->comments;  
+        
+        $pago->save();
+
+        Flash::success('Se ha modificado el pago de forma satisfactoria.');
+        return redirect()->route('admin.pagos.show', [$pago->practicante_id]);
+
+
+    }
+
+    public function store(Request $request, $id){
+
+        $pago = new Pago($request->all());
+
+        $pago->practicante_id = $id;
+
+        $pago->save();
+
+        Flash::success('Se ha registrado el pago de forma satisfactoria.');
+        return redirect()->route('admin.pagos.show', [$id]);
+    }
+
 
     public function create(Request $request, $id){
 
@@ -61,7 +103,8 @@ class PagosController extends Controller
                         ->with('practicante', $practicante)
                         ->with('dojos', Config::get('constants.dojos'))
                         ->with('ranks', Config::get('constants.ranks'))
-                        ->with('type', Config::get('constants.type'));
+                        ->with('type', Config::get('constants.type'))
+                        ->with('conceptos', Config::get('constants.conceptos'));
 
 	}
 }

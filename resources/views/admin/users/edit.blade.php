@@ -12,6 +12,11 @@
 	</div>
 
 	<div class="form-group">
+		{!! Form::label('username', 'Usuario') !!}
+		{!! Form::text('username', $user->username, ['class' => 'form-control', 'placeholder' => 'Nombre de uruario','required']) !!}
+	</div>
+
+	<div class="form-group">
 		{!! Form::label('email', 'Correo Electronico') !!}
 		{!! Form::email('email', $user->email, ['class' => 'form-control', 'placeholder' => 'ejemplo@gmail.com','required']) !!}
 	</div>
