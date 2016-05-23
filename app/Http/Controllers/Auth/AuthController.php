@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use App\Practicante;
+use Laracasts\Flash\Flash;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -30,6 +33,8 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/admin';
     protected $loginPath = '/admin/login';
+    protected $username = 'username';
+
 
     /**
      * Create a new authentication controller instance.
@@ -71,6 +76,29 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    
+    protected function register(){
+        return view('admin.auth.register');
+    }
+
+    protected function postRegister(UserRequest $request){
+        $exist = Practicante::where('email', $request->email)->get();
+        
+        if (count($exist) == 1){
+            $user = new User($request->all());
+            $user->password = bcrypt($request->password);
+            $user->save();
+
+            Flash::success("Se ha registrado el usuario ".$user->name." de manera exitosa! Ya puedes hacer login");
+            
+            return redirect()->route('admin.auth.login');
+        }else{
+            Flash::success("El correo no es válido");
+            return redirect()->route('admin.auth.register');
+        }
+    }
+
 
     protected function getLogin(){
         return view('admin.auth.login');

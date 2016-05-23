@@ -15,13 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/nombre/{nombre?}', function($nombre = ""){
-	return ('Hola '.$nombre);
+Route::group(['middleware' => ['web']], function(){
+
+	Route::get('/nombre/{nombre?}', function($nombre = ""){
+		return ('Hola '.$nombre);
+	});
+
 });
 
-Route::get('/articles', function(){
-	return ('Articles');
-});
+
 
 
 /*
@@ -35,7 +37,7 @@ Route::get('/articles', function(){
 |
 */
 
-Route::group(['prefix' => 'article'], function () {
+Route::group(['prefix' => 'article', 'middleware' => ['web']], function () {
     
 	Route::get('view/{id}', [
 
@@ -46,7 +48,7 @@ Route::group(['prefix' => 'article'], function () {
 
 });
 
-Route::group(['prefix' => 'api'], function (){
+Route::group(['prefix' => 'api', 'middleware' => ['web']], function (){
 
 	Route::get('/', ['as' => 'api.index' , function () {
 	    return view('api.index');
@@ -56,21 +58,54 @@ Route::group(['prefix' => 'api'], function (){
 		'uses'	=>	'ApiController@practicantes',
 		'as'	=>	'api.practicantes'
 	]);
+	Route::get('practicantes/{id}', [
+		'uses' 	=> 	'ApiController@byId',
+		'as'	=>	'api.byId'
+	]);
+	Route::get('articlesCat/{cat}', [
+		'uses' 	=> 	'ApiController@articlesCat',
+		'as'	=>	'api.articlesCat'
+	]);
+	Route::get('articlesTag/{tag}', [
+		'uses' 	=> 	'ApiController@articlesTag',
+		'as'	=>	'api.articlesTag'
+	]);
+	Route::get('categories', [
+		'uses' 	=> 	'ApiController@categories',
+		'as'	=>	'api.categories'
+	]);
+
+	Route::get('tags', [
+		'uses' 		 => 	'ApiController@tags',
+		'as'		 =>		'api.tags'
+	]);
 
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'practicante', 'middleware' => ['web','auth']], function () {
+
+	Route::resource('tecnicas','TecnicasController');
+
+});
+
+
+Route::group(['prefix' => 'admin', 'middleware' => ['web','auth']], function () {
 
 	Route::get('/', ['as' => 'admin.index' , function () {
 	    return view('admin.index');
 	}]);	
-    
-	Route::resource('users','UsersController');
-	Route::resource('categories','CategoriesController');
-	Route::resource('tags','TagsController');
-	Route::resource('articles','ArticlesController');
-	Route::resource('practicantes', 'PracticantesController');
-	Route::resource('pagos', 'PagosController');
+
+	Route::group(['middleware' => 'onlyAdmin'], function(){
+		Route::resource('tags','TagsController');
+		Route::resource('categories','CategoriesController');
+		Route::resource('articles','ArticlesController');
+		Route::resource('practicantes', 'PracticantesController');
+		Route::resource('pagos', 'PagosController');
+		Route::resource('users','UsersController');
+	});
+	
+
+
 
 	//Custom for Users 
 	Route::get('users/{id}/destroy', [
@@ -119,6 +154,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 	]);
 });
 
+Route::get('admin/register', [
+	'uses'	=>	'Auth\AuthController@register',
+	'as'	=>	'admin.auth.register'
+]);
+
+Route::post('admin/register', [
+	'uses'	=>	'Auth\AuthController@postregister',
+	'as'	=>	'admin.auth.register'
+]);
 
 Route::get('admin/login', [
 	'uses'	=>	'Auth\AuthController@getLogin',

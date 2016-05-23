@@ -4,21 +4,13 @@
 
 @section('content')
 
-	@if (count($errors) > 0)
-		<div class="alert alert-danger" role="alert">
-			<ul>
-				@foreach($errors->all() as $error)
-				 	<li>{{ $error }}</li>
-				@endforeach
-			</ul>
-		</div>
-	@endif
+	@include ('errors.list')
 
-	{!! Form::open(['route' => ['admin.articles.update', $article], 'method' => 'PUT']) !!}
+	{!! Form::model($article, ['route' => ['admin.articles.update', $article], 'method' => 'PUT']) !!}
 
 	<div class="form-group">
 		{!! Form::label('title', 'Título') !!}
-		{!! Form::text('title', $article->title, ['class' => 'form-control', 'placeholder' => 'Título del artículo','required']) !!}
+		{!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Título del artículo','required']) !!}
 	</div>
 
 	<div class="form-group">
@@ -28,7 +20,7 @@
 
 	<div class="form-group">
 		{!! Form::label('content', 'Contenido') !!}
-		{!! Form::textarea('content', $article->content, ['class' => 'form-control trumbowyg-content']) !!}
+		{!! Form::textarea('content', null, ['class' => 'form-control trumbowyg-content']) !!}
 	</div>
   
 	<div class="form-group">

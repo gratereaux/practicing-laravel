@@ -72,6 +72,8 @@ class ArticlesController extends Controller
 			$path = base_path() . '/public/images/articles/';
 
 			$file->move($path, $name);
+			
+			$image->name = $name;
 		}
 
 		$article = new Article($request->all());
@@ -81,12 +83,12 @@ class ArticlesController extends Controller
 		$article->tags()->sync($request->tags);
 
 		$image = new Image();
-		$image->name = $name;
+		
 		$image->article_id = $article->id;
 		//$image->article()->associate(); 
 		$image->save();
 
-		Flash::success('Se ha agregado el articulo '. $article->title . ' de forma satisfactoria.');
+		Flash::success('Se ha agregado el articulo de forma satisfactoria.');
 		return redirect()->route('admin.articles.index');
 
 

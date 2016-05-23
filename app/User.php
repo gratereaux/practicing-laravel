@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Http\Requests;
+use App\Practicante;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -32,5 +34,16 @@ class User extends Authenticatable
 
         return $query->where('name', 'LIKE', '%'.$name.'%');
 
+    }
+
+    public function isAdministrator(){
+
+        if(\Auth::user()->type == "admin"){
+            $response = true;
+        }else{
+            $response = false;
+        }
+
+        return $response;
     }
 }

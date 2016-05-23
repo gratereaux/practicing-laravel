@@ -29,4 +29,12 @@ class ArticleRequest extends Request
             'content'       => 'required'
         ];
     }
+
+    public function messages(){
+        return [
+            'title.required' => 'El campo título es requerido',
+            'title.min' => 'El campo título debe contener al menos 4 caracteres.',
+            'content.required' => 'Debe agrega el texto del contenido para poder crear un artículo.'
+        ];
+    }
 }

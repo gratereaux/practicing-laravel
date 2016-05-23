@@ -6,7 +6,7 @@
 
 	@include ('errors.list')
 
-	{!! Form::open(['route' => 'admin.users.store', 'method' => 'POST']) !!}
+	{!! Form::open(['route' => 'admin.auth.register', 'method' => 'POST']) !!}
 
 	<div class="form-group">
 		{!! Form::label('name', 'Nombre') !!}
@@ -29,8 +29,7 @@
 	</div>
 
 	<div class="form-group">
-		{!! Form::label('type', 'Tipo de usuario') !!}
-		{!! Form::select('type', ['member' => 'Miembro', 'admin' => 'Administrador'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione una opción', 'required']) !!}
+		{!! Form::select('type', ['member' => 'Miembro'], null, ['class' => 'form-control', 'required']) !!}
 	</div>
 
 	<div class="form-group">

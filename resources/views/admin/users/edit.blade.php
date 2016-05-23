@@ -13,7 +13,7 @@
 
 	<div class="form-group">
 		{!! Form::label('username', 'Usuario') !!}
-		{!! Form::text('username', $user->username, ['class' => 'form-control', 'placeholder' => 'Nombre de uruario','required']) !!}
+		{!! Form::text('username', $user->username, ['class' => 'form-control', 'placeholder' => 'Nombre de uruario','required', 'disabled' => 'disabled']) !!}
 	</div>
 
 	<div class="form-group">
