@@ -12,7 +12,36 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->with('chart', ['chart1' => [	
+	    										[10, 'red', 'Label 1'],
+	    										[11, 'blue', 'Label 2'],
+	    										[15, 'green', 'Label 3'],
+	    										[21, 'brown', 'Label 4'],
+	    										[30, 'grey', 'Label 5'],
+	    										[14, 'purple', 'Label 6']
+    									  	],
+    									  	'chart2' => [	
+	    										["Hola Mundo 1", "purple" ,[65, 59, 90, 81, 56, 55, 40]],
+	    										["Hola Mundo 2", "red", [28, 48, 40, 19, 96, 27, 100]]
+    									  	],
+    									  ]);
+});
+
+Route::get('/buy', function(){
+	return view("stripe.index");
+});
+
+Route::post('/buy', function(){
+	$billing = App::make('App\Billing\BillingInterface');
+	
+	$billing->charge([
+		'email' => $_POST['email'],
+		'onetime' => $_POST['onetime'],
+		'token' => $_POST['stripe-token']
+	]);
+
+	return "Charge was successful";
+
 });
 
 Route::group(['middleware' => ['web']], function(){
@@ -20,6 +49,8 @@ Route::group(['middleware' => ['web']], function(){
 	Route::get('/nombre/{nombre?}', function($nombre = ""){
 		return ('Hola '.$nombre);
 	});
+
+
 
 });
 
@@ -56,11 +87,13 @@ Route::group(['prefix' => 'api', 'middleware' => ['web']], function (){
 
 	Route::get('practicantes', [
 		'uses'	=>	'ApiController@practicantes',
-		'as'	=>	'api.practicantes'
+		'as'	=>	'api.practicantes',
+		'middleware' => 'apiAuth'
 	]);
 	Route::get('practicantes/{id}', [
 		'uses' 	=> 	'ApiController@byId',
-		'as'	=>	'api.byId'
+		'as'	=>	'api.byId',
+		'middleware' => 'apiAuth'
 	]);
 	Route::get('articlesCat/{cat}', [
 		'uses' 	=> 	'ApiController@articlesCat',
@@ -80,11 +113,34 @@ Route::group(['prefix' => 'api', 'middleware' => ['web']], function (){
 		'as'		 =>		'api.tags'
 	]);
 
+	Route::get('users', [
+		'uses' 		 => 	'ApiController@users',
+		'as'		 =>		'api.users',
+		'middleware' => 'apiAuth'
+	]);
+
+	Route::get('users/{user}', [
+		'uses' 	=> 	'ApiController@user',
+		'as'	=>	'api.user',
+		'middleware' => 'apiAuth'
+	]);	
+
+	Route::get('ranks', [
+		'uses' 	=> 	'ApiController@ranks',
+		'as'	=>	'api.ranks'
+	]);	
+
+	Route::get('dojos', [
+		'uses' 	=> 	'ApiController@dojos',
+		'as'	=>	'api.dojos'
+	]);	
+
 });
 
 Route::group(['prefix' => 'practicante', 'middleware' => ['web','auth']], function () {
 
 	Route::resource('tecnicas','TecnicasController');
+	Route::resource('pagos', 'PagosPracticantesController');
 
 });
 

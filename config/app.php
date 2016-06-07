@@ -161,6 +161,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        App\Providers\BillingServiceProvider::class,
 
 
     ],

@@ -24,7 +24,7 @@ class TecnicasController extends Controller
 
         $usr = Practicante::where('email', '=', $request->user()->email)->get();
         $actual_rank = Tag::where('name', Config::get('constants.ranks')[$usr[0]->actual_rank])->get()[0]->id;
-        
+
         $withTags = DB::table('article_tag')->where('tag_id', $actual_rank)->get(array('article_id'));
 
         //Cleaning the array
@@ -35,7 +35,9 @@ class TecnicasController extends Controller
 
         $articles = Article::whereIn('id', $justTags)->get();
 
-        return View('practicante.tecnicas.index')->with('articles', $articles);
+        return View('practicante.tecnicas.index')->with('articles', $articles)
+                                                 ->with('actual_rank', $usr[0]->actual_rank)
+                                                 ->with('ranks', Config::get('constants.ranks'));
     }
 
     /**

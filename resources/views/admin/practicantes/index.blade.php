@@ -44,19 +44,19 @@
 						<span class="label label-rank-mokuroku">{{ $ranks[$practicante->actual_rank] }}</span>
 					@elseif($ranks[$practicante->actual_rank] == "Okuiri")
 						<span class="label label-rank-okuiri">{{ $ranks[$practicante->actual_rank] }}</span>
-					@elseif($ranks[$practicante->actual_rank] == "1Kyu")
+					@elseif($ranks[$practicante->actual_rank] == "1er Kyu")
 						<span class="label label-rank-brown">{{ $ranks[$practicante->actual_rank] }}</span>
-					@elseif($ranks[$practicante->actual_rank] == "2Kyu")
+					@elseif($ranks[$practicante->actual_rank] == "2do Kyu")
 						<span class="label label-rank-brown">{{ $ranks[$practicante->actual_rank] }}</span>
-					@elseif($ranks[$practicante->actual_rank] == "3Kyu")
+					@elseif($ranks[$practicante->actual_rank] == "3er Kyu")
 						<span class="label label-rank-brown">{{ $ranks[$practicante->actual_rank] }}</span>
-					@elseif($ranks[$practicante->actual_rank] == "4Kyu")
+					@elseif($ranks[$practicante->actual_rank] == "4to Kyu")
 						<span class="label label-rank-green">{{ $ranks[$practicante->actual_rank] }}</span>
-					@elseif($ranks[$practicante->actual_rank] == "5Kyu")
+					@elseif($ranks[$practicante->actual_rank] == "5to Kyu")
 						<span class="label label-rank-yellow">{{ $ranks[$practicante->actual_rank] }}</span>
-					@elseif($ranks[$practicante->actual_rank] == "6Kyu")
+					@elseif($ranks[$practicante->actual_rank] == "6to Kyu")
 						<span class="label label-rank-orange">{{ $ranks[$practicante->actual_rank] }}</span>
-					@else
+					@elseif($ranks[$practicante->actual_rank] == "7mo Kyu")
 						<span class="label label-rank-white">{{ $ranks[$practicante->actual_rank]}}</span>
 					@endif
 
@@ -77,6 +77,6 @@
 
 	</table>
 
-	
+	{!! $practicantes->links() !!}
 
 @endsection

@@ -2,12 +2,13 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<title>@yield('title', 'Blog Jose G') | Panel de Administracion </title>
+	<title>@yield('title', 'Miyama Ryu Jujutsu')</title>
 	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 	<link rel="stylesheet" href="{{ asset('plugin/bootstrap/css/bootstrap.css') }}">
 	<link rel="stylesheet" href="{{ asset('plugin/chosen/chosen.css') }}">
 	<link rel="stylesheet" href="{{ asset('plugin/wyg/ui/trumbowyg.css') }}">
-	
+	<script src="{{ asset('plugin/chart.js/chart.js') }}"></script>
+
 	<link href='https://fonts.googleapis.com/css?family=Lato:900italic' rel='stylesheet' type='text/css'>
 </head>
 <body class="admin-body">
@@ -41,7 +42,6 @@
 	<footer>
 		
 	</footer>
-
 	<script src="{{ asset('plugin/jquery/js/jquery-2.2.0.js') }}"></script>
 	<script src="{{ asset('plugin/bootstrap/js/bootstrap.js') }}"></script>
 	<script src="{{ asset('plugin/chosen/chosen.jquery.js') }}"></script>

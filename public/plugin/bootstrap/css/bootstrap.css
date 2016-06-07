@@ -4960,7 +4960,7 @@ a.label:focus {
 }
 .label-rank-brown {
   background-color: #722b01;
-  padding: 5px 79px;
+  padding: 5px 72px;
 }
 
 .label-rank-white {
@@ -4970,7 +4970,16 @@ a.label:focus {
   padding: 3px 68px;
 }
 
-
+.chart-legend li span{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+.chart-legend ul li {
+    display: inline;
+    margin-left: 10px;
+}
 
 .label-warning[href]:hover,
 .label-warning[href]:focus {

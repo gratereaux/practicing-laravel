@@ -4,7 +4,7 @@
 
 @section('content')
 	
-	<h2>Técnicas de {{Auth::user()->name}}</h2>
+	<h2>Técnicas de {{Auth::user()->name}} ({{$ranks[$actual_rank]}})</h2>
 	<table class="table tanle-striped">
 		<thead>
 			<th>Título</th>

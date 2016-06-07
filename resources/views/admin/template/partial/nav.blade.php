@@ -34,7 +34,7 @@
             @else
               <li><a href="">Información</a></li>
               <li><a href="{{ route('practicante.tecnicas.index') }}">Mis Tecnicas</a></li>
-              <li><a href="">Mis Pagos</a></li>
+              <li><a href="{{ route('practicante.pagos.index') }}">Mis Pagos</a></li>
             @endif
         @endif
       </ul>

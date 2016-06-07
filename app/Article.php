@@ -34,7 +34,7 @@ class Article extends Model implements SluggableInterface
     }
 
     public function tags(){
-    	return $this->belongsToMany('\App\Tag');
+    	return $this->belongsToMany('\App\Tag')->withTimestamps();
     }
 
     public function scopeSearch($query, $title){

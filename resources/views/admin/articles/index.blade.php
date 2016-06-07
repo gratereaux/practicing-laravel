@@ -44,5 +44,6 @@
 	</table>
 
 	{!! $arts->render() !!}
+	{!! $arts->links() !!}
 
 @endsection
